@@ -14,12 +14,18 @@
 - endpoints header required: User-Agent = github username or name of application
 */
 
+//API Base URL
 const apiUrl = 'https://api.github.com';
 
 function buildApiCall(username) {
-  //take username 
+  //hard coded API endpoint for assignment
+  const endpointsUrl = "/users/" + username + "/repos";
+  console.log(endpointsUrl);
   //add it to apiUrl as username param
+  const urlCall = apiUrl + endpointsUrl;
+  console.log(urlCall)
   //return string
+  return urlCall
 }
 
 function displayResults(responseJson) {
@@ -33,6 +39,7 @@ function displayResults(responseJson) {
 function getResults(username) {
   console.log("getResults handle " + username);
   //get buildApiCall(username)
+  buildApiCall(username);
   //call API
   //return results list in Json? in array? = responseJson
   //handle errors
