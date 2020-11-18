@@ -31,6 +31,7 @@ function displayResults(responseJson) {
 }
 
 function getResults(username) {
+  console.log("getResults handle " + username);
   //get buildApiCall(username)
   //call API
   //return results list in Json? in array? = responseJson
@@ -40,8 +41,13 @@ function getResults(username) {
 
 function submitForm() {
   //watch for submit event
-  //get user entry = username param
-  //get and display results, getResults(username)
+  $('form').submit(event => {
+    event.preventDefault();
+    //get user entry = username param
+    const username = $('#github-handle').val();
+    //get and display results, getResults(username)
+    getResults(username);
+  });
 }
 
 $(submitForm);
