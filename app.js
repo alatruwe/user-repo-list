@@ -21,7 +21,7 @@ function buildApiCall(username) {
   //hard coded API endpoint for assignment
   const endpointsUrl = "/users/" + username + "/repos";
   console.log(endpointsUrl);
-  //add it to apiUrl as username param
+  //add endpoints to base url
   const urlCall = apiUrl + endpointsUrl;
   console.log(urlCall)
   //return string
@@ -29,6 +29,7 @@ function buildApiCall(username) {
 }
 
 function displayResults(responseJson) {
+  console.log(responseJson);
   //remove previous results
   //loop through responseJson
   //add to html ul each element
@@ -39,10 +40,13 @@ function displayResults(responseJson) {
 function getResults(username) {
   console.log("getResults handle " + username);
   //get buildApiCall(username)
-  buildApiCall(username);
+  const urlCall = buildApiCall(username);
   //call API
-  //return results list in Json? in array? = responseJson
-  //handle errors
+  fetch(urlCall)
+    .then(response => response.json())
+    .then(responseJson => displayResults(responseJson))
+    //handle errors
+    .catch((error) => $('.js-error-message').text(`An error occured: ${error.message}`))
   //display list to html, displayResults(responseJSon)
 }
 
