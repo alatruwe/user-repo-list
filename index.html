@@ -22,13 +22,12 @@
         <input type="text" id="github-handle" name="github-handle" required>
         <input type="submit">
       </form>
-      <section class="results hidden">
-        <div class="display-results">
-          <h2>Look at this dog!</h2>
-          <img class="results-img" alt="placeholder">
-        <div>
+      <p class=js-error-message></p>
+      <section id="results" class="hidden">
+        <h2>Search results</h2>
+        <ul id="results-list"></ul>
       </section>
-  </div>
+    </div>
   </main>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
   <script src="app.js"></script>
