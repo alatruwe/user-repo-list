@@ -23,18 +23,25 @@ function buildApiCall(username) {
   console.log(endpointsUrl);
   //add endpoints to base url
   const urlCall = apiUrl + endpointsUrl;
-  console.log(urlCall)
+  console.log("buildApiCall return " + urlCall)
   //return string
   return urlCall
 }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
   //remove previous results
+  $('#results-list').empty();
   //loop through responseJson
-  //add to html ul each element
-  //display repo name, link to repo url
+  for (let i = 0; i < responseJson.length; i++) {
+    //add to html ul each element
+    $('#results-list').append(
+      //repo name, link to repo url
+      `<li><h3><a target="_blank" href="
+        ${responseJson[i].svn_url}">${responseJson[i].name}</a>
+        </h3></li>`
+  )};
   //remove hidden class
+  $('#results').removeClass('hidden');
 }
 
 function getResults(username) {
@@ -43,11 +50,16 @@ function getResults(username) {
   const urlCall = buildApiCall(username);
   //call API
   fetch(urlCall)
-    .then(response => response.json())
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.status);
+    })
+    //display list to html, displayResults(responseJSon)
     .then(responseJson => displayResults(responseJson))
     //handle errors
     .catch((error) => $('.js-error-message').text(`An error occured: ${error.message}`))
-  //display list to html, displayResults(responseJSon)
 }
 
 function submitForm() {
