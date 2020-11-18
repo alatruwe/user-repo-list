@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Repo List</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>User Repo List</h1>
+  </header>
+  <main>
+    <div class="container">
+      <form>
+        <label for="github-handle">Enter Github handle:</label>
+        <input type="text" id="github-handle" name="github-handle" required>
+        <input type="submit">
+      </form>
+      <section class="results hidden">
+        <div class="display-results">
+          <h2>Look at this dog!</h2>
+          <img class="results-img" alt="placeholder">
+        <div>
+      </section>
+  </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
